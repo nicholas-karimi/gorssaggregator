@@ -31,3 +31,41 @@ Use the `chi router` package
 Install
 `go get github.com/go-chi/chi`
 `go get github.com/go-chi/cors`
+
+### Database
+Postgres
+- install in local machine
+#3rd party plugins to interact with database
+1. sqlc
+To handle queries.
+`go install github.com/kyleconroy/sqlc/cmd/sqlc@latest` use `go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest`
+[SQLC DOC](https://docs.sqlc.dev/en/stable/tutorials/getting-started-mysql.html)
+check version
+`sqlc version`
+2. goose
+To handle migrations
+`goose` is a database migration tool. Manage your database schema by creating incremental SQL changes and/or Go functions.
+`go install github.com/pressly/goose/v3/cmd/goose@latest`
+
+`goose -version`
+
+#### Run Migrations
+Navigate to the sql/schema directory and run the following command to create migrations.
+`goose postgres postgres://karimi:@localhost:5432/rssagg up`
+
+Down Migrations
+`goose postgres postgres://admin:Incorrect@localhost:5432/rssagg down`
+
+
+Run Queries
+`sqlc generate`
+
+
+DB Connection
+`go get github.com/lib/pq`
+
+UUID
+`go get github.com/google/uuid` 
+
+Clean up unsued imports and vendorize them
+`go mod tidy, go mod vendor`
